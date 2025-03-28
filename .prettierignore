@@ -4,5 +4,9 @@ build/
 .prettierignore
 .prettierrc.cjs
 .eslint.config.js
+pnpm-lock.yaml
+public
+tsconfig.json
+tsconfig.node.json
 dist
 node_modules
