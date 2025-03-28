@@ -1,0 +1,8 @@
+package.json
+build/
+.editorconfig
+.prettierignore
+.prettierrc.cjs
+.eslint.config.js
+dist
+node_modules
