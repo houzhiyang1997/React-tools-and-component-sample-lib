@@ -1,0 +1,7 @@
+{
+  "src/**/*.{js,jsx,ts,tsx}": [
+    "prettier --w",
+    "eslint --fix --quiet",
+    "eslint --quiet"
+  ]
+}

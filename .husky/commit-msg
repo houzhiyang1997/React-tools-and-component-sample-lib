@@ -1,0 +1,24 @@
+#!/usr/bin/env sh
+
+echo '> Validate commit log'
+commit_regex='^Merge.+|(feat|fix|docs|style|refactor|perf|test|build|chore)(\(.+\))?!?: .{1,120}$'
+
+if ! grep -iqE "$commit_regex" "$1"; then
+    echo
+    echo "  Error: proper commit message format is required for automated changelog generation."
+    echo
+    echo "  - Example: \`feat(gpool): modal support serach\`."
+    echo "  - Details: \`https://thoughts.aliyun.com/workspaces/61e12b1f5d5449001aeacb59/docs/631a9e8de4178b000193c194\`"
+    echo
+    echo "    feat      增加新功能 "
+    echo "    docs      修改文档，注释等"
+    echo "    style     不改变代码逻辑 (仅仅修改了空格、格式缩进、逗号等等)"
+    echo "    test      测试相关的修改，包括单元测试、集成测试等"
+    echo "    chore     非 src 和 test 的修改，比如修改.eslintrc、package.json配置等"
+    echo "    build     构建系统或外部依赖项的更改（例如修改webpack配置）"
+    echo "    fix       bug修复"
+    echo "    perf      性能优化"
+    echo "    refactor  重构（既不修复错误也不添加功能）"
+    echo
+    exit 1
+fi
