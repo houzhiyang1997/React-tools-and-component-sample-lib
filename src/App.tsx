@@ -2,10 +2,12 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import useIntl from "@common/locales";
 
 function App() {
   const [count, setCount] = useState(0);
-
+  const [refresh, setRefresh] = useState(false);
+  const { tt } = useIntl();
   return (
     <>
       <div>
@@ -24,10 +26,21 @@ function App() {
         <p>
           Edit <code>src/App.tsx</code> and save to test HMR
         </p>
+        <button
+          onClick={() => {
+            const curLang = localStorage.getItem("language");
+            if (curLang === "en-US") {
+              localStorage.setItem("language", "zh-CN");
+            } else {
+              localStorage.setItem("language", "en-US");
+            }
+            // window.location.reload();
+            setRefresh(!refresh);
+          }}
+        >
+          {tt("button.add")}
+        </button>
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
   );
 }
